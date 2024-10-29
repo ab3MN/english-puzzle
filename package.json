@@ -1,0 +1,58 @@
+{
+  "name": "vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint --max-warnings=0 src",
+    "lint:fix": "npm run lint . --fix",
+    "format:fix": "prettier . --write",
+    "ci:format": "prettier . --check",
+    "preview": "vite preview",
+    "precommit": "npm run format:fix && npm run lint",
+    "prepare": "husky"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "sass-embedded": "^1.77.8",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "@types/node": "^22.8.2",
+    "@typescript-eslint/eslint-plugin": "^8.12.1",
+    "@typescript-eslint/parser": "^8.12.1",
+    "eslint": "^9.13.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "test"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint . --ext ts,tsx --fix",
+    "*.{json,js,ts,jsx,tsx,html}": "prettier --write --ignore-unknown"
+  }
+}
